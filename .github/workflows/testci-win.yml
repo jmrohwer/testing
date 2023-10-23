@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-python@v3
         name: Install Python
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
 #      - name: (macOS) Download and install gfortran
 #        if: matrix.os == 'macos-12'
@@ -27,21 +27,21 @@ jobs:
         run: |
           where gfortran
           
-      - name: Environment
+      # - name: Environment
+      #   run: |
+      #     $Env:Path
+      #     where.exe gfortran
+      #     where.exe f951
+
+
+      - name: Compile nleq2
         run: |
-          $Env:Path
-          where.exe gfortran
-          where.exe f951
-
-
-#       - name: Compile nleq2
-#         run: |
-#           pip3 install numpy meson
-#           cd nleq2
-#           python3 -m numpy.f2py -c nleq2.pyf nleq2.f linalg_nleq2.f zibmon.f zibsec.f zibconst.f wnorm.f
-#           
-#       - name: Test import
-#         run: |
-#           python -c "import nleq2; print(dir(nleq2)); help(nleq2)"
+          pip3 install numpy
+          cd nleq2
+          python3 -m numpy.f2py -c nleq2.pyf nleq2.f linalg_nleq2.f zibmon.f zibsec.f zibconst.f wnorm.f
+          
+      - name: Test import
+        run: |
+          python -c "import nleq2; print(dir(nleq2)); help(nleq2)"
 
       
