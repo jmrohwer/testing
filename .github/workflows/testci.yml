@@ -27,4 +27,7 @@ jobs:
         run: |
           ls -l /usr/local/bin
           ls -l /usr/local/Cellar
-          ls -l /usr/local/Cellar/gcc@11/*
+          ls -l /usr/local/Cellar/gcc@11/bin
+          ls -l /usr/local/Cellar/gcc@11/lib
+          ls -l /usr/local/Cellar/gcc@11/libexec
+          ls -l /usr/local/Cellar/gcc@11/share
