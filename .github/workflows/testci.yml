@@ -25,10 +25,7 @@ jobs:
 
       - name: Find gfortran location
         run: |
-          ls -l /usr/local/bin
-          ls -l /usr/local/Cellar
-          cd /usr/local/Cellar/gcc@11
-          ls -la
-          cd bin
-          pwd
-          ls -la
+          sudo ln -s /usr/local/bin/gfortran-11 /usr/local/bin/gfortran
+          sudo mkdir /usr/local/gfortran
+          sudo ln -s /usr/local/Cellar/gcc@11/*/lib/gcc/11 /usr/local/gfortran/lib
+          gfortran --version
