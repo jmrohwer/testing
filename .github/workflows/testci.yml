@@ -29,6 +29,5 @@ jobs:
           sudo mkdir /usr/local/gfortran
           sudo ln -s /usr/local/Cellar/gcc@11/*/lib/gcc/11 /usr/local/gfortran/lib
           gfortran --version
-          ls -l /usr/local/Cellar/gcc@11/*/lib
-          ls -l /usr/local/Cellar/gcc@11/*/lib/gcc
-          ls -l /usr/local/Cellar/gcc@11/*/lib/gcc/11
+          pwd
+          ls -la
