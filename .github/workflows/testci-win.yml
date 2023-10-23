@@ -29,8 +29,8 @@ jobs:
           
       - name: Environment
         run: |
-          echo %PATH%
-          set
+          $Env:Path
+          where.exe gfortran
 
 
 #       - name: Compile nleq2
