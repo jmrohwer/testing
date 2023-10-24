@@ -35,7 +35,7 @@ jobs:
           $Env:Path
           $Env:GITHUB_PATH
           where.exe gfortran
-          Add-Content $env:GITHUB_PATH "C:\mingw64\libexec\gcc\x86_64-w64-mingw32\12.2.0"
+          echo "C:\mingw64\libexec\gcc\x86_64-w64-mingw32\12.2.0" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           $Env:Path
           $Env:GITHUB_PATH
           where.exe gfortran
