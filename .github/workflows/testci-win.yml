@@ -28,6 +28,7 @@ jobs:
           where.exe gfortran
           ls C:\mingw64\lib\gcc\x86_64-w64-mingw32\12.2.0
           ls C:\mingw64\lib\gcc\x86_64-w64-mingw32\lib
+          ls C:\mingw64\libexec\gcc\x86_64-w64-mingw32\12.2.0
           
       # - name: Environment
       #   run: |
