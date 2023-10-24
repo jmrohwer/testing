@@ -29,7 +29,6 @@ jobs:
           $Env:GITHUB_PATH
           $Env:GITHUB_ENV
           where.exe gfortran
-          where.exe f951
 
       - name: Compile nleq2
         run: |
