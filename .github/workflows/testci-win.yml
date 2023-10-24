@@ -30,12 +30,17 @@ jobs:
           ls C:\mingw64\lib\gcc\x86_64-w64-mingw32\lib
           ls C:\mingw64\libexec\gcc\x86_64-w64-mingw32\12.2.0
           
-      # - name: Environment
-      #   run: |
-      #     $Env:Path
-      #     where.exe gfortran
-      #     where.exe f951
-
+      - name: Environment
+        run: |
+          $Env:Path
+          $Env:GITHUB_PATH
+          where.exe gfortran
+          where.exe f951
+          Add-Content $env:GITHUB_PATH "C:\mingw64\libexec\gcc\x86_64-w64-mingw32\12.2.0"
+          $Env:Path
+          $Env:GITHUB_PATH
+          where.exe gfortran
+          where.exe f951
 
 #       - name: Compile nleq2
 #         run: |
