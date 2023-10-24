@@ -20,14 +20,14 @@ jobs:
         uses: myci-actions/export-env-var-powershell@1
         with:
           name: PATH
-          value: C:\mingw64\libexec\gcc\x86_64-w64-mingw32\12.2.0;$env:PATH
+          value: C:\Strawberry\c\bin;$env:PATH
           
           
       - name: Check new environment
         run: |
           $Env:Path
           $Env:GITHUB_PATH
-          $Env:GITHIB_ENV
+          $Env:GITHUB_ENV
           where.exe gfortran
           where.exe f951
 
