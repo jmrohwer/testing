@@ -16,15 +16,20 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install rtools MinGW compilers
+      - name: Install numpy from git
         run: |
-          choco install rtools -y --no-progress --force --version=4.0.0.20220206
-          
-      - name: expand PATH 
-        uses: myci-actions/export-env-var-powershell@1
-        with:
-          name: PATH
-          value: c:\rtools40\ucrt64\bin;c:\rtools40\usr\bin;$env:PATH
+          python3 -m pip install git+https://github.com/HaoZeke/numpy.git@winF2PYquadmath
+          python3 -c "import numpy; numpy.test()"
+
+#       - name: Install rtools MinGW compilers
+#         run: |
+#           choco install rtools -y --no-progress --force --version=4.0.0.20220206
+#           
+#       - name: expand PATH 
+#         uses: myci-actions/export-env-var-powershell@1
+#         with:
+#           name: PATH
+#           value: c:\rtools40\ucrt64\bin;c:\rtools40\usr\bin;$env:PATH
           
       # - name: Check new environment
       #   run: |
@@ -37,18 +42,18 @@ jobs:
       #     where.exe make
       #     where.exe python
 
-      - name: Install prerequisites
-        run: |
-          python3 -m pip install meson
-          python3 -m pip install git+https://github.com/HaoZeke/numpy.git@winF2PYquadmath
-          
-      - name: Compile nleq2
-        run: |
-          cd nleq2
-          python3 -m numpy.f2py -c nleq2.pyf nleq2.f linalg_nleq2.f zibmon.f zibsec.f zibconst.f wnorm.f
-          
-      - name: Test import
-        run: |
-          python -c "import nleq2; print(dir(nleq2)); help(nleq2)"
-
-      
+#       - name: Install prerequisites
+#         run: |
+#           python3 -m pip install meson
+#           python3 -m pip install git+https://github.com/HaoZeke/numpy.git@winF2PYquadmath
+#           
+#       - name: Compile nleq2
+#         run: |
+#           cd nleq2
+#           python3 -m numpy.f2py -c nleq2.pyf nleq2.f linalg_nleq2.f zibmon.f zibsec.f zibconst.f wnorm.f
+#           
+#       - name: Test import
+#         run: |
+#           python -c "import nleq2; print(dir(nleq2)); help(nleq2)"
+# 
+#       
