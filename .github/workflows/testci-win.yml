@@ -28,7 +28,7 @@ jobs:
           
       - name: Check new environment
         run: |
-          ls $env:
+          ls env:
           $Env:Path
           $Env:GITHUB_PATH
           $Env:GITHUB_ENV
