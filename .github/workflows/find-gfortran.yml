@@ -15,7 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: (macos-13) Find gfortran location
+      - name: Find gfortran location
+        if: matrix.os == 'macos-13'
         run: |
           echo "---------------"
           echo "/usr/local/bin"
@@ -24,7 +25,8 @@ jobs:
           echo "/usr/local/Cellar"
           ls -l /usr/local/Cellar/
 
-      - name: (macos-latest) Find gfortran location
+      - name: Find gfortran location
+        if: matrix.os == 'macos-latest'
         run: |
           echo "---------------"
           echo "/usr/local/bin"
