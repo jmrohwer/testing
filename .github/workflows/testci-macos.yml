@@ -1,0 +1,43 @@
+name: CI testing on macOS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test_gfortran:
+    name: Test gfortran on macos
+    runs-on: macos-12
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # - uses: actions/setup-python@v3
+      #   name: Install Python
+      #   with:
+      #     python-version: '3.11'
+
+#      - name: (macOS) Download and install gfortran
+#        if: matrix.os == 'macos-12'
+#        run: |
+#          curl -L https://github.com/fxcoudert/gfortran-for-macOS/releases/download/12.1-monterey/gfortran-Intel-12.1-Monterey.dmg -o /tmp/gfortran-intel.dmg &&
+#          sudo hdiutil attach /tmp/gfortran-intel.dmg &&
+#          sudo installer -pkg /Volumes/gfortran-Intel-12.1-Monterey/gfortran-Intel-12.1-Monterey/gfortran.pkg -target /
+
+      - name: Install gfortran
+        run: |
+          sudo ln -s /usr/local/bin/gfortran-11 /usr/local/bin/gfortran
+          sudo mkdir /usr/local/gfortran
+          sudo ln -s /usr/local/Cellar/gcc@11/*/lib/gcc/11 /usr/local/gfortran/lib
+          gfortran --version
+          
+      - name: Compile nleq2
+        run: |
+          pip3 install numpy
+          cd nleq2
+          f2py -c nleq2.pyf nleq2.f linalg_nleq2.f zibmon.f zibsec.f zibconst.f wnorm.f
+          
+      - name: Test import
+        run: |
+          python -c "import nleq2; print(dir(nleq2)); help(nleq2)"
+
+      

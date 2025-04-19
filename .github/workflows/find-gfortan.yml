@@ -1,0 +1,25 @@
+name: CI testing gfortran
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test_gfortran:
+    name: Test gfortran on macos
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-13, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Find gfortran location
+        run: |
+          ls -l /usr/bin
+          ls -l /usr/local/bin
+          ls -l /opt/homebrew/bin
+          ls -l /opt/homebrew/Cellar/
+          ls -l /usr/local/Cellar/
