@@ -1,4 +1,4 @@
-name: CI testing gfortran
+name: CI testing find gfortran
 
 on:
   workflow_dispatch:
