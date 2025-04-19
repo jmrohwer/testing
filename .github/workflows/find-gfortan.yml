@@ -15,15 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-
       - name: Find gfortran location
         run: |
           echo "---------------"
           echo "/usr/local/bin"
           ls -l /usr/local/bin
-          echo "---------------"
-          echo "/opt/homebrew/Cellar"
-          ls -l /opt/homebrew/Cellar/
           echo "---------------"
           echo "/usr/local/Cellar"
           ls -l /usr/local/Cellar/
