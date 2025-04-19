@@ -22,9 +22,6 @@ jobs:
           echo "/usr/local/bin"
           ls -l /usr/local/bin
           echo "---------------"
-          echo "/opt/homebrew/bin"
-          ls -l /opt/homebrew/bin
-          echo "---------------"
           echo "/opt/homebrew/Cellar"
           ls -l /opt/homebrew/Cellar/
           echo "---------------"
