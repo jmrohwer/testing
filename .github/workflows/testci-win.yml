@@ -21,26 +21,26 @@ jobs:
           python3 -m pip install git+https://github.com/HaoZeke/numpy.git@winF2PYquadmath
           python3 -c "import numpy; numpy.test()"
 
-#       - name: Install rtools MinGW compilers
-#         run: |
-#           choco install rtools -y --no-progress --force --version=4.0.0.20220206
-#           
-#       - name: expand PATH 
-#         uses: myci-actions/export-env-var-powershell@1
-#         with:
-#           name: PATH
-#           value: c:\rtools40\ucrt64\bin;c:\rtools40\usr\bin;$env:PATH
+       - name: Install rtools MinGW compilers
+         run: |
+           choco install rtools -y --no-progress --force --version=4.0.0.20220206
+
+       - name: expand PATH
+         uses: myci-actions/export-env-var-powershell@1
+         with:
+           name: PATH
+           value: c:\rtools40\ucrt64\bin;c:\rtools40\usr\bin;$env:PATH
           
-      # - name: Check new environment
-      #   run: |
-      #     ls env:
-      #     $Env:Path
-      #     $Env:GITHUB_PATH
-      #     $Env:GITHUB_ENV
-      #     where.exe gfortran
-      #     where.exe gcc
-      #     where.exe make
-      #     where.exe python
+       - name: Check new environment
+         run: |
+           ls env:
+           $Env:Path
+           $Env:GITHUB_PATH
+           $Env:GITHUB_ENV
+           where.exe gfortran
+           where.exe gcc
+           where.exe make
+           where.exe python
 
 #       - name: Install prerequisites
 #         run: |
