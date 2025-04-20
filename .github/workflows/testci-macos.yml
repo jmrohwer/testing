@@ -6,7 +6,11 @@ on:
 jobs:
   test_gfortran:
     name: Test gfortran on macos
-    runs-on: macos-12
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-13, macos-latest]
 
     steps:
       - uses: actions/checkout@v4
@@ -23,13 +27,24 @@ jobs:
 #          sudo hdiutil attach /tmp/gfortran-intel.dmg &&
 #          sudo installer -pkg /Volumes/gfortran-Intel-12.1-Monterey/gfortran-Intel-12.1-Monterey/gfortran.pkg -target /
 
-      - name: Install gfortran
+      - name: (macos-13_ Install gfortran
+        if: matrix.os == 'macos-13'
         run: |
-          sudo ln -s /usr/local/bin/gfortran-11 /usr/local/bin/gfortran
-          sudo mkdir /usr/local/gfortran
-          sudo ln -s /usr/local/Cellar/gcc@11/*/lib/gcc/11 /usr/local/gfortran/lib
+          sudo ln -s /usr/local/bin/gfortran-12 /usr/local/bin/gfortran
+#          sudo mkdir /usr/local/gfortran
+#          sudo ln -s /usr/local/Cellar/gcc@11/*/lib/gcc/11 /usr/local/gfortran/lib
+          which gfortran
           gfortran --version
           
+      - name: (macos-latest) Install gfortran
+        if: matrix.os == 'macos-latest'
+        run: |
+          sudo ln -s /opt/homebrew/bin/gfortran-12 /opt/homebrew/bin/gfortran
+#          sudo mkdir /usr/local/gfortran
+#          sudo ln -s /usr/local/Cellar/gcc@11/*/lib/gcc/11 /usr/local/gfortran/lib
+          which gfortran
+          gfortran --version
+
       - name: Compile nleq2
         run: |
           pip3 install numpy
