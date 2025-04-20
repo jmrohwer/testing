@@ -49,12 +49,12 @@ jobs:
 
       - name: Compile nleq2
         run: |
-          pip3 install numpy
+          pip3 install numpy --user
           cd nleq2
           f2py -c nleq2.pyf nleq2.f linalg_nleq2.f zibmon.f zibsec.f zibconst.f wnorm.f
           
       - name: Test import
         run: |
-          python -c "import nleq2; print(dir(nleq2)); help(nleq2)"
+          python3 -c "import nleq2; print(dir(nleq2)); help(nleq2)"
 
       
