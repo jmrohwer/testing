@@ -24,6 +24,7 @@ jobs:
           echo "---------------"
           echo "/usr/local/Cellar"
           ls -l /usr/local/Cellar/
+          which gfortran
 
       - name: Find gfortran location
         if: matrix.os == 'macos-latest'
@@ -37,3 +38,4 @@ jobs:
           echo "---------------"
           echo "/opt/homebrew/bin"
           ls -l /opt/homebrew/bin
+          which gfortran
