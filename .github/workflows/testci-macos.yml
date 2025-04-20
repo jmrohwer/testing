@@ -49,9 +49,9 @@ jobs:
 
       - name: Compile nleq2
         run: |
-          pip3 install numpy --user
+          pip3 install numpy --user --break-system-packages
           cd nleq2
-          f2py -c nleq2.pyf nleq2.f linalg_nleq2.f zibmon.f zibsec.f zibconst.f wnorm.f
+          python3 -m f2py -c nleq2.pyf nleq2.f linalg_nleq2.f zibmon.f zibsec.f zibconst.f wnorm.f
           
       - name: Test import
         run: |
